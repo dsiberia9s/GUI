@@ -10,7 +10,9 @@ btnA = M5Button(name="ButtonA", text="ButtonA", visibility=False)
 btnB = M5Button(name="ButtonB", text="ButtonB", visibility=False)
 btnC = M5Button(name="ButtonC", text="ButtonC", visibility=False)
 
-MQTTConnection = None
+#########################################################
+######################## GUI ############################
+#########################################################
 
 class GUIObject:
     __X = 0
@@ -225,6 +227,24 @@ pass
 
 GUIRoll = []
 GUIActiveScene = 0
+
+def GUIPString(idSp, sp, srcStr):
+    dstStr = ''
+    cnt = 0
+    for i in range(len(srcStr)):
+        if srcStr[i] == sp:
+            cnt += 1
+            pass
+        else:
+            if cnt == idSp:
+                dstStr += srcStr[i]
+                pass
+            elif cnt > idSp:
+                break
+            pass
+        pass
+    return dstStr
+pass
 
 def GUILive():
     if buttonA.wasPressed():
@@ -470,6 +490,9 @@ def GUIInputbox(obj):
                     lcd.clear()
                     obj.Status = 1
                     obj.TextValue = s
+                    if obj.Function != None:
+                        obj.Function(obj)
+                        pass
                     break
                 if k == 'left':
                     lcd.line(x + cp * cw, y + 20 - 4, x + cp * cw, y + 20 + ch, 0x000000)
@@ -513,10 +536,6 @@ def GUIInputbox(obj):
                 pass
             pass
         pass
-    if obj.Function != None:
-        obj.Function(obj)
-        pass
-    pass
     return obj
 pass
 
@@ -582,6 +601,14 @@ def GUIButton(obj):
     return obj
 pass
 
+#########################################################
+##################### GUI END ###########################
+#########################################################
+
+MQTTConnection = None
+
+ChatRoll = []
+
 def MQTTSetup(obj):
     global MQTTConnection
     MQTTConnection = M5mqtt(GUI("MQTTAPIKey").TextValue, GUI("MQTTServerAddress").TextValue, int(GUI("MQTTServerPort").TextValue), GUI("MQTTUsername").TextValue, GUI("MQTTPassword").TextValue, 3000)
@@ -591,7 +618,11 @@ def MQTTSetup(obj):
 pass
 
 def MQTTSubscription(topic_data):
-    GUI("human1").Label = str(topic_data)
+    data = str(topic_data)
+    name = GUIPString(0, ':', data)
+    message = GUIPString(1, ':', data)
+    GUI("human1").Label = name
+    GUI("human1").TextValue = message
 pass
 
 def usrFunc(obj):
