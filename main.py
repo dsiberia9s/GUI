@@ -423,7 +423,7 @@ pass
 
 def GUIScene(Number):
     global GUIActiveScene
-    GUIActiveScene = 1
+    GUIActiveScene = Number
     lcd.fill(0x000000)
 pass
 
