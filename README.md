@@ -31,9 +31,11 @@ Figure 3
 The Status (default 0) field is integral to any of the graphical elements. This field defines one of three States (as of today): 
 
 
-- 0 Visible (item is available and displayed);
-- 1 Touchable (item available, displayed, available for interaction); 
-- 2 Controllable (the element is entirely under user control, other elements are not available at the moment).
+0 - Visible (item is available and displayed);
+
+1 - Touchable (item available, displayed, available for interaction); 
+
+2 - Controllable (the element is entirely under user control, other elements are not available at the moment).
 
 ![](https://pp.userapi.com/c855520/v855520118/193d8/cJBv4TxX6QY.jpg)
 
@@ -106,9 +108,9 @@ GUI имеет защиту от наложения одного графиче�
 Поле Status (default 0) является неотъемлемым для любого из графических элементов. Данное поле определяет одно из трёх состояний (на сегодняшний день): 
 
 
-- 0. Visible (элемент доступен и отображается);
-- 1. Touchable (элемент доступен, отображается, доступен для взаимодействия); 
-- 2. Controllable (элемент находится целиком под управлением пользователя, другие элементы недоступны в данный момент).
+0 - Visible (элемент доступен и отображается);
+1 - Touchable (элемент доступен, отображается, доступен для взаимодействия); 
+2 - Controllable (элемент находится целиком под управлением пользователя, другие элементы недоступны в данный момент).
 
 ![](https://pp.userapi.com/c855520/v855520118/193d8/cJBv4TxX6QY.jpg)
 
