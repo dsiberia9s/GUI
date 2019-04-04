@@ -30,7 +30,7 @@ class GUIObject:
     __Label_ = __Label
     __TextValue = ""
     __TextValue_ = __TextValue
-    __Focusable = 0
+    __Focusable = False
     __Function = None
     
     @property
