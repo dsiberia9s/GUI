@@ -65,6 +65,8 @@ Each graphic element has an optional Function (default None) field that stores a
 
 Figure 8
 
+> Attention, please: you need Download the sketch for using on the version <= 1.2.3. If you use Run will be memory problems.
+
 Okay, now, for example, let's try to create a button on scene number 0:
 
 	obj = GUIObject()
@@ -141,6 +143,8 @@ GUI имеет защиту от наложения одного графиче�
 ![](https://pp.userapi.com/c855520/v855520118/193fc/2txpXC4RGvI.jpg)
 
 Рисунок 8
+
+> Обратите внимание: Вам необходимо нажать Download для загрузки кода в постоянную память устройства во всех версиях <= 1.2.3. Если вы используете Run, то будут проблемы с памятью и код не выполнится.
 
 Хорошо, теперь, для примера, давайте попробуем создать кнопку на сцене под номером 0:
 
