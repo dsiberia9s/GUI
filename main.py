@@ -1,7 +1,6 @@
 from m5ui import *
 import utime as time
 import random
-from m5mqtt import M5mqtt
 
 clear_bg(0x111111)
 
@@ -605,176 +604,18 @@ pass
 ##################### GUI END ###########################
 #########################################################
 
-MQTTConnection = None
-
-ChatRoll = []
-
-def MQTTSetup(obj):
-    global MQTTConnection
-    MQTTConnection = M5mqtt(GUI("MQTTAPIKey").TextValue, GUI("MQTTServerAddress").TextValue, int(GUI("MQTTServerPort").TextValue), GUI("MQTTUsername").TextValue, GUI("MQTTPassword").TextValue, 3000)
-    MQTTConnection.subscribe("main", MQTTSubscription)
-    MQTTConnection.start()
-    GUIScene(1)
-pass
-
-def MQTTSubscription(topic_data):
-    data = str(topic_data)
-    name = GUIPString(0, ':', data)
-    message = GUIPString(1, ':', data)
-    GUI("human1").Label = name
-    GUI("human1").TextValue = message
-pass
-
-def usrFunc(obj):
-    GUI("human1").TextValue = "Goodbye!"
-pass
-
-def usrFunc2(objInputbox):
-    GUI("human1").TextValue = objInputbox.TextValue
-pass
-
-# Scene 1
-
 obj = GUIObject()
-obj.Name = "MQTTServerAddress"
-obj.Type = "inputbox"
-obj.Label = "Server address:"
-obj.TextValue = "m14.cloudmqtt.com"
-obj.X = 10
-obj.Y = 10
-obj.Scene = 0
-obj.Width = 145
-obj.Focusable = True
-GUIAttach(obj)
-obj = None
-
-obj = GUIObject()
-obj.Name = "MQTTServerPort"
-obj.Type = "inputbox"
-obj.Label = "Server port:"
-obj.TextValue = "16318"
-obj.X = 165
-obj.Y = 10
-obj.Scene = 0
-obj.Width = 145
-obj.Focusable = True
-GUIAttach(obj)
-obj = None
-
-obj = GUIObject()
-obj.Name = "MQTTAPIKey"
-obj.Type = "inputbox"
-obj.Label = "API Key:"
-obj.TextValue = "d93f9667-af39-406a-af6c-b3a68e890e4f"
-obj.X = 10
-obj.Y = 70
-obj.Scene = 0
-obj.Width = 300
-obj.Focusable = True
-GUIAttach(obj)
-obj = None
-
-obj = GUIObject()
-obj.Name = "MQTTUsername"
-obj.Type = "inputbox"
-obj.Label = "User name:"
-obj.TextValue = "xiiwgtpp"
-obj.X = 10
-obj.Y = 130
-obj.Scene = 0
-obj.Width = 145
-obj.Focusable = True
-GUIAttach(obj)
-obj = None
-
-obj = GUIObject()
-obj.Name = "MQTTPassword"
-obj.Type = "inputbox"
-obj.Label = "Password:"
-obj.TextValue = "aWoZ8e8nQdEu"
-obj.X = 165
-obj.Y = 130
-obj.Scene = 0
-obj.Width = 145
-obj.Focusable = True
-GUIAttach(obj)
-obj = None
-
-obj = GUIObject()
-obj.Name = "MQTTSetupButton"
+obj.Name = "myFirstButton"
 obj.Type = "button"
-obj.Label = "Start"
-obj.X = 130
-obj.Y = 210
+obj.Label = "My button"
+obj.X = 10
+obj.Y = 19
 obj.Scene = 0
 obj.Focusable = True
-obj.Function = MQTTSetup
-GUIAttach(obj)
-obj = None
-
-# Scene 2
-
-obj = GUIObject()
-obj.Name = "human1"
-obj.Type = "human"
-obj.Label = "Jack"
-obj.TextValue = "Hello, guys! My name is Jack"
-obj.X = 50
-obj.Y = 10
-obj.Scene = 1
-GUIAttach(obj)
-obj = None
-
-obj = GUIObject()
-obj.Name = "human2"
-obj.Type = "human"
-obj.Label = "William"
-obj.TextValue = "My name is William. I'am from UK"
-obj.X = 100
-obj.Y = 10
-obj.Scene = 1
-GUIAttach(obj)
-obj = None
-
-obj = GUIObject()
-obj.Name = "human3"
-obj.Type = "human"
-obj.Label = "Daniel"
-obj.TextValue = "Hi! I'am Daniel"
-obj.X = 150
-obj.Y = 10
-obj.Scene = 1
-GUIAttach(obj)
-obj = None
-
-obj = GUIObject()
-obj.Name = "button2"
-obj.Type = "button"
-obj.Label = "Button"
-obj.X = 220
-obj.Y = 100
-obj.Scene = 1
-obj.Focusable = True
-obj.Function = usrFunc
-GUIAttach(obj)
-obj = None
-
-obj = GUIObject()
-obj.Name = "NewMessage"
-obj.Type = "inputbox"
-obj.Label = "Your message:"
-obj.TextValue = "hello"
-obj.X = 10
-obj.Y = 170
-obj.Scene = 1
-obj.Width = 300
-obj.Focusable = True
-obj.Function = usrFunc2
 GUIAttach(obj)
 obj = None
 
 lcd.fill(0x000000)
-
 while True:
     GUILive()
     wait(0.001)
